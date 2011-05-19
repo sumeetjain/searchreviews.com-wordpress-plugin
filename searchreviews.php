@@ -11,12 +11,13 @@ License: GPL2
 
 // ### FRONT-END ###
 
-add_action( 'wp_head', 'searchreviews_script');
+add_action( 'init', 'searchreviews_script');
 add_filter('the_content', 'searchreviews_link');
 
 function searchreviews_script(){
 	$sr_script_loc = "http://searchreviews.com/widget/widget.jsp?pId=" . get_option('sr_pId');
-	wp_register_script( 'searchreviews', $sr_script_loc);
+	wp_register_script('searchreviews', $sr_script_loc);
+	wp_enqueue_script('searchreviews');
 }
 
 function searchreviews_link($content){
