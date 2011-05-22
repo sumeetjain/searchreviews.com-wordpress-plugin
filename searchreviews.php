@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: SearchReviews.com Widget
-Plugin URI: http://searchreviews.com/publishers
-Description: Get reviews on your website; earn affiliate cash.
+Plugin URI: http://searchreviews.com/publisher
+Description: Get reviews from SearchReviews.com on your website.
 Version: 1.0
 Author: Sumeet Jain
 Author URI: http://sumeetjain.com
