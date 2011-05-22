@@ -23,7 +23,6 @@ function searchreviews_link($content){
 	global $post;
 	$link = '<a href="http://searchreviews.com" title="Reviews for ' . get_post_meta($post->ID, 'sr_tags', true) . '" class="searchReviewsLink" keywords="' . get_post_meta($post->ID, 'sr_tags', true) . '">' . get_post_meta($post->ID, 'sr_tags', true) . ' reviews</a>';
 	return $link . $content;
-	// get_post_meta($post->ID, 'sr_tags', true)
 }
 
 
@@ -38,13 +37,14 @@ function sr_add_boxes(){
 	add_meta_box("searchreviews_box", __('SearchReviews.com Widget'), "sr_box_content", "page", "side");
 }
 function sr_box_content(){
+	global $post;
 	// Use nonce for verification
 	wp_nonce_field(plugin_basename( __FILE__ ), 'searchreviews');
 	// The actual fields for data entry
 	echo '<label for="sr_tags">';
 	_e("Find reviews for:");
 	echo '</label> ';
-	echo '<input type="text" id="sr_tags" name="sr_tags" value="" size="25" />';
+	echo '<input type="text" id="sr_tags" name="sr_tags" value="' . get_post_meta($post->ID, 'sr_tags', true) . '" size="25" />';
 }
 function sr_save_postdata($post_id){
 	// Check if this is an auto save routine. 
