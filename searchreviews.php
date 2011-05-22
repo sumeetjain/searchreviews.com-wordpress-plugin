@@ -21,7 +21,14 @@ function searchreviews_script(){
 }
 function searchreviews_link($content){
 	global $post;
-	$link = '<a href="http://searchreviews.com" title="Reviews for ' . get_post_meta($post->ID, 'sr_tags', true) . '" class="searchReviewsLink" keywords="' . get_post_meta($post->ID, 'sr_tags', true) . '">' . get_post_meta($post->ID, 'sr_tags', true) . ' reviews</a>';
+	
+	if(get_post_meta($post->ID, 'sr_tags', true) != ''){
+		$link = '<a href="http://searchreviews.com" title="Reviews for ' . get_post_meta($post->ID, 'sr_tags', true) . '" class="searchReviewsLink" keywords="' . get_post_meta($post->ID, 'sr_tags', true) . '">' . get_post_meta($post->ID, 'sr_tags', true) . ' reviews</a>';
+	}
+	else{
+		$link = '';
+	}
+	
 	return $link . $content;
 }
 
