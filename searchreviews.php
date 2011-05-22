@@ -20,8 +20,10 @@ function searchreviews_script(){
 	wp_enqueue_script('searchreviews');
 }
 function searchreviews_link($content){
-	$link = '<a href="http://searchreviews.com" title="3P?" class="searchReviewsLink" keywords="2P">Speedo reviews</a>';
+	global $post;
+	$link = '<a href="http://searchreviews.com" title="Reviews for ' . get_post_meta($post->ID, 'sr_tags', true) . '" class="searchReviewsLink" keywords="' . get_post_meta($post->ID, 'sr_tags', true) . '">' . get_post_meta($post->ID, 'sr_tags', true) . ' reviews</a>';
 	return $link . $content;
+	// get_post_meta($post->ID, 'sr_tags', true)
 }
 
 
