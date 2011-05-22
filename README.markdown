@@ -24,7 +24,7 @@ Posts and pages now have a "SearchReviews.com Widget" meta-box. Just add keyword
 
 [![Keywords](http://f.cl.ly/items/0t253l2O2Y3v2y013i24/Screen%20shot%202011-05-22%20at%2012.37.37%20AM_600x338.shkl.png)](http://www.cl.ly/6xq3)
 
-### TODO
+## TODO
 This is very much under construction. It should work without issue right now, but the plugin would benefit from more customizability:
 
 - Ability to change the text that's shown in the widget link
