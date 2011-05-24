@@ -25,6 +25,9 @@ function searchreviews_link($content){
 	if(get_post_meta($post->ID, 'sr_tags', true) != ''){
 		$link = '<a href="http://searchreviews.com" title="Reviews for ' . get_post_meta($post->ID, 'sr_tags', true) . '" class="searchReviewsLink" keywords="' . get_post_meta($post->ID, 'sr_tags', true) . '">' . get_post_meta($post->ID, 'sr_tags', true) . ' reviews</a>';
 	}
+	elseif(get_option('sr_showAlways') == "true"){
+		$link = '<a href="http://searchreviews.com" title="Find Reviews" class="searchReviewsLink" rel="nonExistentID1234">Find Reviews</a>';
+	}
 	else{
 		$link = '';
 	}
@@ -101,22 +104,27 @@ function searchreviews_options() {
 		wp_die( __('You do not have sufficient permissions to access this page.') );
 	}	
 	// Variables for the field and option names 
-	$opt_name = 'sr_pId';
 	$hidden_field_name = 'sr_hidden';
-	$data_field_name = 'sr_pId';
+	$opt_name1 = 'sr_pId';
+	$opt_name2 = 'sr_showAlways';
+	$data_field_name1 = 'sr_pId';
+	$data_field_name2 = 'sr_showAlways';
 	// Read in existing option value from database
-	$opt_val = get_option($opt_name);
+	$opt_val1 = get_option($opt_name1);
+	$opt_val2 = get_option($opt_name2);
 	// See if the user has posted us some information
 	// If they did, this hidden field will be set to 'Y'
 	if (isset($_POST[$hidden_field_name]) && $_POST[$hidden_field_name] == 'Y'){
 		// Read their posted value
-		$opt_val = $_POST[$data_field_name];
+		$opt_val1 = $_POST[$data_field_name1];
+		$opt_val2 = $_POST[$data_field_name2];
 		// Save the posted value in the database
-		update_option($opt_name, $opt_val);
+		update_option($opt_name1, $opt_val1);
+		update_option($opt_name2, $opt_val2);
 		// Show "settings updated" message:	
 ?>
 
-<div class="updated"><p><strong><?php _e('Updated Publisher ID.'); ?></strong></p></div>
+<div class="updated"><p><strong><?php _e('Updated Settings.'); ?></strong></p></div>
 
 <?php
 	}
@@ -130,7 +138,9 @@ function searchreviews_options() {
 	<form name="form1" method="post" action="">
 		<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
 		<p><?php _e("Publisher ID (optional):"); ?> 
-			<input type="text" name="<?php echo $data_field_name; ?>" value="<?php echo $opt_val; ?>" size="20">
+			<input type="text" name="<?php echo $data_field_name1; ?>" value="<?php echo $opt_val1; ?>" size="20">
+		</p>
+		<p><input type="checkbox" name="<?php echo $data_field_name2; ?>" value="true" <?php if($opt_val2 == "true"){ echo 'checked="checked"';} ?>> <?php _e("Always show widget"); ?> <?php echo $opt_val2; ?>
 		</p><hr />
 		<p class="submit">
 			<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save') ?>" />
