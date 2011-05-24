@@ -25,7 +25,7 @@ function searchreviews_link($content){
 	if(get_post_meta($post->ID, 'sr_tags', true) != ''){
 		$link = '<a href="http://searchreviews.com" title="Reviews for ' . get_post_meta($post->ID, 'sr_tags', true) . '" class="searchReviewsLink" keywords="' . get_post_meta($post->ID, 'sr_tags', true) . '">' . get_post_meta($post->ID, 'sr_tags', true) . ' reviews</a>';
 	}
-	elseif(get_option('sr_showAlways') == "false"){
+	elseif(get_option('sr_showAlways') == "always"){
 		$link = '<a href="http://searchreviews.com" title="Find Reviews" class="searchReviewsLink" rel="nonExistentID1234">Find Reviews</a>';
 	}
 	else{
@@ -140,8 +140,10 @@ function searchreviews_options() {
 		<p><?php _e("Publisher ID (optional):"); ?> 
 			<input type="text" name="<?php echo $data_field_name1; ?>" value="<?php echo $opt_val1; ?>" size="20">
 		</p>
-		<p>By default, if you don't enter any keywords for reviews when you write a post, the widget will look for its own keywords and use them for the widget. To prevent this behavior, uncheck the box.</p>
-		<p><input type="checkbox" name="<?php echo $data_field_name2; ?>" value="true" <?php if($opt_val2 == "false"){ echo 'checked="checked"';} ?>> <?php _e("Only show widget if I manually enter keywords."); ?>.
+		<p>By default, if you don't enter any keywords for reviews when you write a post, the widget will look for its own keywords and use them to find reviews. To prevent this behavior, toggle this setting:</p>
+		<p>
+			<label><input type="radio" name="<?php echo $data_field_name2; ?>" value="always" <?php if($opt_val2 == "always"){ echo 'checked="checked"';} ?>> <?php _e("Always show widget."); ?></label><br />
+			<label><input type="radio" name="<?php echo $data_field_name2; ?>" value="manual" <?php if($opt_val2 == "manual"){ echo 'checked="checked"';} ?>> <?php _e("Only show widget if I manually enter keywords."); ?></label>
 		</p><hr />
 		<p class="submit">
 			<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save') ?>" />
