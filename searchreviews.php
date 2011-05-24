@@ -140,7 +140,8 @@ function searchreviews_options() {
 		<p><?php _e("Publisher ID (optional):"); ?> 
 			<input type="text" name="<?php echo $data_field_name1; ?>" value="<?php echo $opt_val1; ?>" size="20">
 		</p>
-		<p><input type="checkbox" name="<?php echo $data_field_name2; ?>" value="true" <?php if($opt_val2 == "true"){ echo 'checked="checked"';} ?>> <?php _e("Always show widget"); ?> <?php echo $opt_val2; ?>
+		<p>Check the following box if you want the widget to appear regardless of if you enter keywords on an individual post. If this box is checked and you don't enter any keywords, the widget will look for its own keywords and use them for the widget. To prevent this behavior, uncheck the box.</p>
+		<p><input type="checkbox" name="<?php echo $data_field_name2; ?>" value="true" <?php if($opt_val2 == "true"){ echo 'checked="checked"';} ?>> <?php _e("Always show widget"); ?>.
 		</p><hr />
 		<p class="submit">
 			<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save') ?>" />
