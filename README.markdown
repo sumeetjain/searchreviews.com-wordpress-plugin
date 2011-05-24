@@ -1,7 +1,7 @@
 # SearchReviews.com Widget - WordPress Plugin
 Upon enabling this plugin, the SearchReviews.com widget Javascript is included in your theme. Additionally, a meta-box is added the New/Edit Post and New/Edit Page screens. This meta-box takes a list of keywords for which to search for reviews on SearchReviews.com.
 
-If keywords are entered into the meta-box, the SearchReviews.com widget will appear at the top of your post/page. Clicking the widget will show a modal window with the reviews. If no keywords are entered, the widget will not be shown for that post/page.
+If keywords are entered into the meta-box, the SearchReviews.com widget will appear at the top of your post/page. Clicking the widget will show a modal window with the reviews. If no keywords are entered, the widget will find its own keywords (from your page's H1 tag).
 
 ## Installation/Activation
 [Download the plugin](https://github.com/sumeetjain/searchreviews.com-wordpress-plugin/zipball/master). Unzip the folder and move it into your WordPress site's plugins folder (/wp-content/plugins). This installs the plugin.
